@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.pengqiangx</groupId>
+	<artifactId>learn2java</artifactId>
+	<version>0.0.1</version>
+	<name>learn2java</name>
+	<packaging>pom</packaging>
+	<description>learn2java</description>
+
+
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/pengqiangx/learn2tomcat</url>
+		<connection>scm:git:git://github.com/pengqiangx/learn2java.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/pengqiangx/learn2java.git</developerConnection>
+	</scm>
+
+
+
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/pengqiangx/learn2tomcat/issues</url>
+	</issueManagement>
+
+
+
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+		<maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+
+	</properties>
+
+	<modules>
+		<module>java-base</module>
+    </modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.10</version>
+		</dependency>
+	</dependencies>
+
+
+</project>
+
