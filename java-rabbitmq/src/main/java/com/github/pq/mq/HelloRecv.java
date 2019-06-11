@@ -1,30 +1,49 @@
 package com.github.pq.mq;
 
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.DeliverCallback;
+import com.rabbitmq.client.*;
 
 /**
  * @author xiaoniu 2019/5/21.
  */
 public class HelloRecv {
-    private final static String QUEUE_NAME = "hello";
+
+    private final static String QUEUE_NAME = "queue_demo";
 
     public static void main(String[] argv) throws Exception {
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         Connection connection = factory.newConnection();
+        //创建信道
         Channel channel = connection.createChannel();
+        //创建队列
+        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
-        DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), "UTF-8");
-            System.out.println(" [x] Received '" + message + "'");
+        channel.basicQos(30);
+
+
+        DeliverCallback deliverCallback = (consumerTag, message) -> {
+            String messageStr = new String(message.getBody(), "UTF-8");
+            System.out.println(" [x] consumerTag="+consumerTag+";Received= '" + messageStr + "'");
+            try {
+                doSomeWork(messageStr);
+            } finally {
+                System.out.println(" [x] Done");
+                //channel.basicAck(message.getEnvelope().getDeliveryTag(), false);
+            }
         };
-        channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
+
+        CancelCallback cancelCallback = (String consumerTag)-> {
+            System.out.println("cancel....consumerTag="+consumerTag);
+        };
+        channel.basicConsume(QUEUE_NAME, false, deliverCallback,cancelCallback);
+
+
+    }
+
+    private static void doSomeWork(String messageStr) {
+        System.out.println("do something....");
     }
 }
