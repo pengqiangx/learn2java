@@ -13,5 +13,42 @@
     <artifactId>java-base</artifactId>
     <version>0.0.1</version>
 
+    <properties>
+
+        <plugin.compiler.version>3.8.0</plugin.compiler.version>
+        <plugin.resources.version>3.1.0</plugin.resources.version>
+        <encoding>UTF-8</encoding>
+        <jdk.version>1.8</jdk.version>
+        <!--suppress UnresolvedMavenProperty -->
+        <jdk.home>${env.JAVA_HOME}</jdk.home>
+
+
+    </properties>
+
+
+    <dependencies>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${plugin.compiler.version}</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <fork>true</fork>
+                    <debug>true</debug>
+                    <optimize>true</optimize>
+                    <encoding>${encoding}</encoding>
+                    <showDeprecation>true</showDeprecation>
+                    <compilerVersion>${jdk.version}</compilerVersion>
+                    <executable>${jdk.home}/bin/javac</executable>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

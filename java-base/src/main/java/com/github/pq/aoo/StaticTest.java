@@ -1,5 +1,7 @@
 package com.github.pq.aoo;
 
+import org.junit.Test;
+
 /**
  * @author xiaoniu 2019/2/27.
  */
@@ -20,4 +22,11 @@ public class StaticTest {
         // test.method2();  --- error
         StaticTest.method2();
     }
+
+    public static void test1(){
+        StaticBoo boo  =new StaticBoo();
+        boo.hello();
+    }
+
+
 }
