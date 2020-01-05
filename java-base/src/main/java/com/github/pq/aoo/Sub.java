@@ -2,6 +2,8 @@ package com.github.pq.aoo;
 
 import org.junit.Test;
 
+import java.awt.*;
+
 /**
  * @author xiaoniu 2019/4/28.
  */
@@ -16,6 +18,10 @@ public class Sub extends Parent {
         int m = 0;
         int n = 1;
         return add(m, n);
+    }
+
+    public static void hello() {
+        System.out.println("sub");
     }
 
 }

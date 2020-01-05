@@ -10,6 +10,8 @@ public class TestOne {
     public void test1() {
         Sub sub = new Sub();
         sub.go();
+        Sub.hello();
+        Parent.hello();
     }
 
     @Test

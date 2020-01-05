@@ -16,5 +16,10 @@ public class Parent implements interTwo,interOne {
         return x+y;
     }
 
+    public static void hello(){
+        System.out.println("parent");
+
+    }
+
 
 }
